@@ -19,17 +19,14 @@ def contact():
 
 @app.route("/submit", methods=["POST", "GET"])
 def submit():
-    success = False
-
     if request.method == "POST":
         name = request.form.get("name")
         email = request.form.get("email")
         message = request.form.get("message")
-        success = True
 
         return render_template(
             "contact.html",
-            success=success, name=name, email=email, message=message
+            success=True, name=name, email=email, message=message
         )
     else:
         return redirect(url_for('contact'))
