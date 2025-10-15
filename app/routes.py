@@ -14,7 +14,13 @@ def home():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    team_members = [
+        {'name': 'Alice', 'role': 'Developer'},
+        {'name': 'Bob', 'role': 'Designer'},
+        {'name': 'Charlie', 'role': 'Project Manager'},
+        {'name': 'Diana', 'role': 'QA'}
+    ]
+    return render_template('about.html', team_members=team_members)
 
 
 @app.route('/contact')
