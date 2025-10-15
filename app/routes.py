@@ -5,6 +5,15 @@ import locale
 
 locale.setlocale(locale.LC_TIME, 'ru_RU')
 
+CARE_DEPARTMENT_INFO = {
+        'name': 'Alice',
+        'address': {
+            'street': '123 Main St',
+            'city': 'Wonderland',
+            'zip': '12345'
+        }
+    }
+
 
 @app.route('/')
 def home():
@@ -25,7 +34,8 @@ def about():
 
 @app.route('/contact')
 def contact():
-    return render_template('contact.html')
+    care_department_info = CARE_DEPARTMENT_INFO
+    return render_template('contact.html', care_department_info=care_department_info)
 
 
 @app.route("/submit", methods=["POST", "GET"])
@@ -35,9 +45,12 @@ def submit():
         email = request.form.get("email")
         message = request.form.get("message")
 
+        care_department_info = CARE_DEPARTMENT_INFO
+        
         return render_template(
             "contact.html",
-            success=True, name=name, email=email, message=message
+            success=True, name=name, email=email, message=message,
+            care_department_info=care_department_info
         )
     else:
         return redirect(url_for('contact'))

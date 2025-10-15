@@ -19,4 +19,11 @@
 
         <button type="submit">Send</button>
     </form>
+
+	<ul>Our Care Manager:
+		<li>Name: {{ care_department_info.name }}</li>
+		<li>Street: {{ care_department_info.address.street }}</li>
+		<li>City: {{ care_department_info.address.city }}</li>
+		<li>ZIP Code: {{ care_department_info.address.zip }}</li>
+	</ul>
 {% endblock %}
