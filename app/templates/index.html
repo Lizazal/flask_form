@@ -4,6 +4,7 @@
 
 {% block content %}
     <h1>Welcome to My Flask App</h1>
+	<p>Сегодня: {{ current_time.strftime('%A, %B %d, %Y, %H:%M:%S') | title }}</p>
     <p>Explore the website to learn more about us!</p>
 	<img src="{{ url_for('static', filename='img/logo.svg')}}" alt="Flask logo"/>
 {% endblock %}
